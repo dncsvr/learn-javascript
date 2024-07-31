@@ -1,0 +1,10 @@
+{
+  "type": "commonjs",
+  "scripts": {
+    "build": "npx browserify index.js -o .output/index.build.js",
+    "start": "npm run build && npx http-server . -p 3000"
+  },
+  "dependencies": {
+    "matter-js": "^0.20.0"
+  }
+}
