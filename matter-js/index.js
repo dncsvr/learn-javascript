@@ -13,8 +13,8 @@ window.onload = function() {
       }
   });
 
-  const boxA = Bodies.rectangle(400, 200, 80, 80);
-  const boxB = Bodies.rectangle(450, 50, 80, 80);
+  const boxA = Bodies.circle(400, 200, 20, 20);
+  const boxB = Bodies.circle(400, 200, 20, 20);
   const edges = [
       Bodies.rectangle(0, 0, 1600, 10, { isStatic: true }),
       Bodies.rectangle(0, 0, 10, 1200, { isStatic: true }),
