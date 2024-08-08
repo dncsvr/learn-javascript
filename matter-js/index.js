@@ -13,8 +13,22 @@ window.onload = function() {
       }
   });
 
-  const boxA = Bodies.circle(400, 200, 20, 20);
-  const boxB = Bodies.circle(400, 200, 20, 20);
+  const boxes = [
+    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
+    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
+    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
+    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
+    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
+    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
+    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
+    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
+    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
+    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
+    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
+    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
+    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0})
+  ];
+
   const edges = [
       Bodies.rectangle(0, 0, 1600, 10, { isStatic: true }),
       Bodies.rectangle(0, 0, 10, 1200, { isStatic: true }),
@@ -22,13 +36,12 @@ window.onload = function() {
       Bodies.rectangle(1590, 0, 1600, 1200, { isStatic: true })
   ];
 
-  Composite.add(engine.world, [boxA, boxB, ...edges]);
+  Composite.add(engine.world, [...boxes, ...edges]);
 
   const mouse = Mouse.create(render.canvas);
   const mouseConstraint = MouseConstraint.create(engine, {
     mouse: mouse,
     constraint: {
-      // allow bodies on mouse to rotate
       angularStiffness: 0,
       render: { visible: false }
     }
@@ -36,12 +49,9 @@ window.onload = function() {
 
   Composite.add(engine.world, mouseConstraint);
 
-  // keep the mouse in sync with rendering
   render.mouse = mouse;
-
   Render.run(render);
 
   const runner = Runner.create();
-
   Runner.run(runner, engine);
 }
