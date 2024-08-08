@@ -1,4 +1,4 @@
-const { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint } = require("matter-js");
+const { Engine, Render, Runner, Bodies, Composite, Composites, Mouse, MouseConstraint } = require("matter-js");
 
 window.onload = function() {
   const engine = Engine.create({
@@ -13,21 +13,14 @@ window.onload = function() {
       }
   });
 
-  const boxes = [
-    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
-    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
-    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
-    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
-    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
-    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
-    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
-    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
-    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
-    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
-    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
-    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0}),
-    Bodies.circle(400, 200, 20, { restitution: 1, friction: 0, frictionAir: 0, frictionStatic: 0})
-  ];
+  const boxes = Composites.stack(200, 100, 10, 10, 0, 0, (x, y) => {
+    return Bodies.circle(x, y, 20, {
+        restitution: 1,
+        friction: 0,
+        frictionAir: 0,
+        frictionStatic: 0
+    });
+  });
 
   const edges = [
       Bodies.rectangle(0, 0, 1600, 10, { isStatic: true }),
@@ -36,7 +29,7 @@ window.onload = function() {
       Bodies.rectangle(1590, 0, 1600, 1200, { isStatic: true })
   ];
 
-  Composite.add(engine.world, [...boxes, ...edges]);
+  Composite.add(engine.world, [boxes, ...edges]);
 
   const mouse = Mouse.create(render.canvas);
   const mouseConstraint = MouseConstraint.create(engine, {
