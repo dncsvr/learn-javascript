@@ -1,13 +1,16 @@
 const { Bodies, Body, Composite, Constraint, Events } = require("matter-js");
 
 /**
- * @param {import("matter-js").Engine} engine
  * @param {Number} x
  * @param {Number} y
  * @param {Number} size
  */
-function Balloon(engine, x, y, size = 20) {
-  const result = Composite.create({ label: "balloon" });
+function Balloon(x, y,
+  size = undefined
+) {
+  size = size || Math.random() * 20 + 10;
+
+  const composite = Composite.create({ label: "balloon" });
 
   const top = Bodies.circle(x, y, size, {
     mass: 1,
@@ -29,23 +32,32 @@ function Balloon(engine, x, y, size = 20) {
   });
 
   const bond = Constraint.create({
-      bodyA: top,
-      bodyB: bottom,
-      stiffness: 0.3,
-      render: {
-        visible: false
-      }
+    bodyA: top,
+    bodyB: bottom,
+    stiffness: 0.3,
+    render: {
+      visible: false
+    }
   });
 
-  Composite.add(result, [top, bottom, bond]);
+  Composite.add(composite, [top, bottom, bond]);
 
-  Events.on(engine, 'beforeUpdate', () => {
-    Body.applyForce(top, top.position, { x: 0, y: -0.005 - 0.03*(top.position.y/1600) });
-  });
+  /**
+   * @param {import("matter-js").Engine} engine
+   */
+  function add(engine) {
+    Composite.add(engine.world, composite);
 
-  return result;
+    Events.on(engine, 'beforeUpdate', () => {
+      Body.applyForce(top, top.position, { x: 0, y: -0.005 - 0.03*(top.position.y/1600) });
+    });
+  }
+
+  return {
+    add
+  };
 }
 
 module.exports = {
-    new: Balloon
+  new: Balloon
 };

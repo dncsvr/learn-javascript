@@ -5,7 +5,6 @@ function DemoWorld() {
   const engine = Engine.create({
     gravity: { x: 0, y: 1 }
   });
-
   const render = Render.create({
     canvas: document.getElementById("matter-js"),
     engine: engine,
@@ -14,24 +13,24 @@ function DemoWorld() {
       background: "transparent"
     }
   });
-
   const runner = Runner.create();
 
-  const balloons = [];
   for(let i=0; i<10; i++) {
     for(let j=0; j<10; j++) {
-      balloons.push(Balloon.new(engine, 200+i*10, 200+j*10, Math.random() * 20 + 10));
+      const balloon = Balloon.new(200+i*30, 200+j*30);
+
+      balloon.add(engine);
     }
   }
 
   const edges = [
-    Bodies.rectangle(0, 0, 1600, 10, { isStatic: true }),
-    Bodies.rectangle(0, 0, 10, 1200, { isStatic: true }),
-    Bodies.rectangle(0, 1190, 1600, 1200, { isStatic: true }),
-    Bodies.rectangle(1595, 0, 1600, 1200, { isStatic: true })
+    Bodies.rectangle(400, -5, 800, 10, { isStatic: true }),
+    Bodies.rectangle(-5, 300, 10, 600, { isStatic: true }),
+    Bodies.rectangle(400, 605, 800, 10, { isStatic: true }),
+    Bodies.rectangle(805, 300, 10, 600, { isStatic: true })
   ];
 
-  Composite.add(engine.world, [...balloons, ...edges]);
+  Composite.add(engine.world, edges);
 
   function enableMouse() {
     const mouse = Mouse.create(render.canvas);
