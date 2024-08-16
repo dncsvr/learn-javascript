@@ -1,7 +1,7 @@
 {
   "type": "commonjs",
   "scripts": {
-    "build": "npx browserify index.js -o .output/index.build.js",
+    "build": "npx browserify Program.js -o .output/index.js",
     "start": "npm run build && npx http-server . -p 3000"
   },
   "dependencies": {

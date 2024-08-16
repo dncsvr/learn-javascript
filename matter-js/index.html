@@ -2,8 +2,23 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="https://brand.mouseless.codes/assets/css/default.css" />
-    <link rel="stylesheet" type="text/css" href="index.css" />
-    <script src=".output/index.build.js"></script>
+    <style>
+      body {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 95vh;
+      }
+
+      #matter-js {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+      }
+    </style>
+    <script defer src=".output/index.js"></script>
   </head>
   <body class="f f--xl">
     <h1>
