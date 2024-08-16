@@ -49,7 +49,7 @@ function Balloon(x, y,
     Composite.add(engine.world, composite);
 
     Events.on(engine, 'beforeUpdate', () => {
-      Body.applyForce(top, top.position, { x: 0, y: -0.005 - 0.03*(top.position.y/1600) });
+      Body.applyForce(top, top.position, { x: 0, y: -0.01 - 0.0000035*(top.position.y) });
     });
   }
 
