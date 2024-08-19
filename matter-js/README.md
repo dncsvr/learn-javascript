@@ -10,3 +10,8 @@ vue project.
 - Create a `<canvas id="..." />` and use `canvas` option during `Render.create`
   to have a better control. Otherwise matter.js creates canvas element by
   itself.
+- bind dom to a body in matter js by applying css transformations on each update
+  of matter js
+- use `pointer-events: none` to pass overlaying div events to the canvas behind
+- manually sync dom and matter js when using vue via `onMounted` and
+  `onUpdated`.

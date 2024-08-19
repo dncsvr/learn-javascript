@@ -9,6 +9,7 @@
         align-items: center;
         justify-content: center;
         text-shadow: 0 0 var(--space-xs) var(--color-bg);
+        pointer-events: none;
       }
 
       .container > * {
@@ -30,14 +31,21 @@
     <script defer src=".output/index.js"></script>
   </head>
   <body>
-    <canvas id="matters" class="matters" width="1000" height="1000"></canvas>
-    <div class="container f f--xl">
-      <h1 class="matter" style="top: 10px; left: 350px;">
-        This is matter.js
-      </h1>
-      <p class="matter" style="top: 50px; left: 325px;">
-        And nothing else matterjs 🫠
-      </p>
+    <canvas id="matter-js" class="matters" width="1000" height="1000"></canvas>
+    <div id="vue-js">
+      <button @click="add">+++</button>
+      <button @click="remove">---</button>
+      <div class="container f f--xl">
+        <h1 class="matter" style="top: 10px; left: 350px;">
+          This is matter.js
+        </h1>
+        <p class="matter" style="top: 50px; left: 325px;">
+          And nothing else matterjs 🫠
+        </p>
+        <p v-for="vue in vues" class="matter" style="top: 75px; left: 500px;">
+          {{vue}}
+        </p>
+      </div>
     </div>
   </body>
 </html>

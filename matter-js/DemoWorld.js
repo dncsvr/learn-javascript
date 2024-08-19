@@ -33,12 +33,6 @@ function DemoWorld(id) {
     }
   }
 
-  const domBodyElements = document.getElementsByClassName("matter");
-  for(const domBodyElement of domBodyElements) {
-    const domBody = DomBody.new(domBodyElement);
-    domBody.add(engine);
-  }
-
   function enableMouse() {
     const mouse = Mouse.create(render.canvas);
     const mouseConstraint = MouseConstraint.create(engine, {
@@ -59,9 +53,14 @@ function DemoWorld(id) {
     Runner.run(runner, engine);
   }
 
+  function sync() {
+    DomBody.sync(engine);
+  }
+
   return {
     enableMouse,
-    run
+    run,
+    sync
   };
 }
 

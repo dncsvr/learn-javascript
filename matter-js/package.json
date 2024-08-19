@@ -5,6 +5,7 @@
     "start": "npm run build && npx http-server . -p 3000"
   },
   "dependencies": {
-    "matter-js": "^0.20.0"
+    "matter-js": "^0.20.0",
+    "vue": "^3.4.38"
   }
 }
