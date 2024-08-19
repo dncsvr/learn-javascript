@@ -1,17 +1,23 @@
-const { createApp, reactive, onMounted, onUpdated } = require("vue");
+const { createApp, ref, reactive, onMounted, onUpdated } = require("vue");
 const DemoWorld = require("./DemoWorld.js");
 
 const world = DemoWorld.new("matter-js");
 const app = createApp({
   setup() {
     const vues = reactive([]);
+    const prefix = ref("vue");
+    const shown = ref(true);
 
     function add() {
-      vues.push(`vue-#${vues.length}`)
+      vues.push(`#${vues.length}`)
     }
 
     function remove() {
       vues.pop();
+    }
+
+    function toggle() {
+      shown.value = !shown.value;
     }
 
     onMounted(() => world.sync());
@@ -19,8 +25,11 @@ const app = createApp({
 
     return {
       vues,
+      prefix,
+      shown,
       add,
-      remove
+      remove,
+      toggle
     };
   },
 });

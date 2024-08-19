@@ -33,8 +33,10 @@
   <body>
     <canvas id="matter-js" class="matters" width="1000" height="1000"></canvas>
     <div id="vue-js">
+      <input type="text" v-model="prefix" />
       <button @click="add">+++</button>
       <button @click="remove">---</button>
+      <button @click="toggle">{{(shown ? 'hide' : 'show')}}</button>
       <div class="container f f--xl">
         <h1 class="matter" style="top: 10px; left: 350px;">
           This is matter.js
@@ -42,8 +44,13 @@
         <p class="matter" style="top: 50px; left: 325px;">
           And nothing else matterjs 🫠
         </p>
-        <p v-for="vue in vues" class="matter" style="top: 75px; left: 500px;">
-          {{vue}}
+        <p
+          v-for="vue in vues"
+          v-if="shown"
+          class="matter"
+          style="top: 75px; left: 500px;"
+        >
+          {{prefix}}-{{vue}}
         </p>
       </div>
     </div>
