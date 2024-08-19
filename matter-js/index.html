@@ -27,6 +27,16 @@
       .matters {
         z-index: -1;
       }
+
+      .data {
+        background-color: var(--color-red-0);
+        border-radius: 100%;
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: font-size 0.2s;
+      }
     </style>
     <script defer src=".output/index.js"></script>
   </head>
@@ -34,6 +44,8 @@
     <canvas id="matter-js" class="matters" width="1000" height="1000"></canvas>
     <div id="vue-js">
       <input type="text" v-model="prefix" />
+      <button @click="setMultiplier(2)">bigger</button>
+      <button @click="setMultiplier(0.5)">smaller</button>
       <button @click="add">+++</button>
       <button @click="remove">---</button>
       <button @click="toggle">{{(shown ? 'hide' : 'show')}}</button>
@@ -45,12 +57,13 @@
           And nothing else matterjs 🫠
         </p>
         <p
-          v-for="vue in vues"
+          v-for="(datum, index) in data"
           v-if="shown"
-          class="matter"
+          class="matter data"
           style="top: 75px; left: 500px;"
+          :style="`font-size: ${(datum/10+0.5)}em`"
         >
-          {{prefix}}-{{vue}}
+          {{prefix}}{{index+1}}
         </p>
       </div>
     </div>
