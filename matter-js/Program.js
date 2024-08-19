@@ -1,6 +1,6 @@
 const DemoWorld = require("./DemoWorld.js");
 
-const world = DemoWorld.new();
+const world = DemoWorld.new("matters");
 
-world.enableMouse();
+// world.enableMouse();
 world.run();

@@ -1,16 +1,18 @@
-const { Engine, Render, Runner, Composite, Mouse, MouseConstraint } = require("matter-js");
+const { Composite, Engine, Mouse, MouseConstraint, Render, Runner } = require("matter-js");
 const Balloon = require("./Balloon.js");
+const DomBody = require("./DomBody.js");
 const Frame = require("./Frame.js");
 
-function DemoWorld() {
-  const width = 1000;
-  const height = 1000;
+function DemoWorld(id) {
+  const canvas = document.getElementById(id)
+  const width = canvas.width;
+  const height = canvas.height;
 
   const engine = Engine.create({
     gravity: { x: 0, y: 1 }
   });
   const render = Render.create({
-    canvas: document.getElementById("matter-js"),
+    canvas: canvas,
     engine: engine,
     options: {
       wireframes: false,
@@ -24,11 +26,17 @@ function DemoWorld() {
   const frame = Frame.new(1000, 1000, 10);
   frame.add(engine);
 
-  for(let i=0; i<10; i++) {
-    for(let j=0; j<10; j++) {
+  for(let i=0; i<15; i++) {
+    for(let j=0; j<15; j++) {
       const balloon = Balloon.new(width/2-150+i*30, height/2-150+j*30);
       balloon.add(engine);
     }
+  }
+
+  const domBodyElements = document.getElementsByClassName("matter");
+  for(const domBodyElement of domBodyElements) {
+    const domBody = DomBody.new(domBodyElement);
+    domBody.add(engine);
   }
 
   function enableMouse() {

@@ -3,29 +3,41 @@
   <head>
     <link rel="stylesheet" type="text/css" href="https://brand.mouseless.codes/assets/css/default.css" />
     <style>
-      body {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          height: 95vh;
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-shadow: 0 0 var(--space-xs) var(--color-bg);
       }
 
-      #matter-js {
+      .container > * {
+        position: absolute;
+      }
+
+      .container, .matters {
         position: fixed;
         top: calc(50% - 500px);
         left: calc(50% - 500px);
+        width: 1000px;
+        height: 1000px;
+      }
+
+      .matters {
+        z-index: -1;
       }
     </style>
     <script defer src=".output/index.js"></script>
   </head>
-  <body class="f f--xl">
-    <h1>
-      This is matter.js
-    </h1>
-    <p>
-      And nothing else matterjs 🫠
-    </p>
-    <canvas id="matter-js" width="1000" height="1000" />
+  <body>
+    <canvas id="matters" class="matters" width="1000" height="1000"></canvas>
+    <div class="container f f--xl">
+      <h1 class="matter" style="top: 10px; left: 350px;">
+        This is matter.js
+      </h1>
+      <p class="matter" style="top: 50px; left: 325px;">
+        And nothing else matterjs 🫠
+      </p>
+    </div>
   </body>
 </html>
