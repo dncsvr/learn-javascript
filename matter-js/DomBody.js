@@ -1,35 +1,44 @@
-const { Composite, Bodies, Events } = require("matter-js");
+const { Bodies, Body, Composite, Events } = require("matter-js");
 
 /**
  * @param {HTMLElement} element
  */
 function DomBody(element) {
-  const translateOffsetX = parseInt(element.style.left) + element.offsetWidth / 2;
-  const translateOffsetY = parseInt(element.style.top) + element.offsetHeight;
+  element.style.margin = "0";
+
+  let width = element.offsetWidth;
+  let height = element.offsetHeight;
 
   const body = Bodies.rectangle(
-    translateOffsetX,
-    translateOffsetY,
-    element.offsetWidth,
-    element.offsetHeight,
-    { mass: 0, inertia: 0, render: { visible: false }
-  });
+    parseInt(element.style.left) + offsetX(),
+    parseInt(element.style.top) + offsetY(),
+    width,
+    height,
+    { render: { visible: false } }
+  );
 
-  function sync() {
+  function offsetX() { return element.offsetWidth / 2; }
+  function offsetY() { return element.offsetHeight / 2; }
+
+  function syncBody2Dom() {
     const x = body.position.x;
     const y = body.position.y;
     const angle = body.angle;
 
-    element.style.transformOrigin = 'center';
-    element.style.transform = `translate(${x - translateOffsetX}px, ${y - translateOffsetY}px) rotate(${angle}rad)`;
+    element.style.transformOrigin = 'center center';
+    element.style.left = `${x - offsetX()}px`;
+    element.style.top = `${y - offsetY()}px`;
+    element.style.transform = `rotate(${angle}rad)`;
   }
 
-  /**
-   * @param {import("matter-js").Engine} engine
-   */
-  function add(engine) {
-    Composite.add(engine.world, body);
-    Events.on(engine, 'afterUpdate', sync);
+  function syncDom2Body() {
+    const angle = body.angle;
+    Body.setAngle(body, 0);
+    Body.scale(body, element.offsetWidth / width, element.offsetHeight / height);
+    Body.setAngle(body, angle);
+
+    width = element.offsetWidth;
+    height = element.offsetHeight;
   }
 
   function elementRemoved() {
@@ -39,15 +48,23 @@ function DomBody(element) {
   /**
    * @param {import("matter-js").Engine} engine
    */
-  function remove(engine) {
+  function add(engine) {
+    Composite.add(engine.world, body);
+    Events.on(engine, 'afterUpdate', syncBody2Dom);
+  }
 
+  /**
+   * @param {import("matter-js").Engine} engine
+   */
+  function remove(engine) {
     Composite.remove(engine.world, body);
-    Events.off(engine, 'afterUpdate', sync);
+    Events.off(engine, 'afterUpdate', syncBody2Dom);
   }
 
   return {
-    add,
+    syncDom2Body,
     elementRemoved,
+    add,
     remove
   };
 }
@@ -75,6 +92,10 @@ function sync(engine) {
     body.remove(engine);
     bodies.splice(i, 1);
     i--;
+  }
+
+  for(const body of bodies) {
+    body.syncDom2Body();
   }
 }
 

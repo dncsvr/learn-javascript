@@ -1,13 +1,13 @@
 const { createApp, ref, reactive, onMounted, onUpdated } = require("vue");
 const DemoWorld = require("./DemoWorld.js");
 
-const world = DemoWorld.new("matter-js");
 const app = createApp({
   setup() {
     const data = reactive([]);
     const prefix = ref("#");
     const multiplier = ref(1);
     const shown = ref(true);
+    const world = DemoWorld.new("matter-js");
 
     function setMultiplier(newMultiplier) {
       multiplier.value = newMultiplier;
@@ -18,7 +18,6 @@ const app = createApp({
     }
 
     function add() {
-      console.log(multiplier);
       data.push(data.length*multiplier.value);
     }
 
@@ -30,7 +29,10 @@ const app = createApp({
       shown.value = !shown.value;
     }
 
-    onMounted(() => world.sync());
+    onMounted(() => {
+      world.enableMouse();
+      world.run();
+    });
     onUpdated(() => world.sync());
 
     return {
@@ -47,5 +49,3 @@ const app = createApp({
 });
 
 app.mount("#vue-js");
-world.enableMouse();
-world.run();

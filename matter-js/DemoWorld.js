@@ -49,6 +49,7 @@ function DemoWorld(id) {
   }
 
   function run() {
+    sync();
     Render.run(render);
     Runner.run(runner, engine);
   }
