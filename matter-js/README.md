@@ -13,8 +13,11 @@ vue project.
 - bind dom to a body and update dom element's position and rotation on each
   update of matter js so that dom element gets its physics from hidden backing
   body
-  - use `pointer-events: none` to pass overlaying div events to the canvas
-    behind to enable interaction with the body :thinking:
+  - forward events using `dispatchEvent` and use `v-on` to register multiple
+    handlers at once
+    - use `user-select: none` to disable text selection on dom elements with
+      backing body to prevent selection during dragging the element in matter
+      world
   - keep an array of body references to find removed element's corresponding
     bodies from matter world
   - create bodies from dom during `onMounted`
@@ -26,3 +29,4 @@ vue project.
   - scale backing body to match dom element size on every update
   - set angle to 0 before scaling to keep body size sync with dom element size
     and set angle back to original to keep it moving as it was
+  - use `transitionend` to sync dom information after css transitions

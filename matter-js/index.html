@@ -3,19 +3,6 @@
   <head>
     <link rel="stylesheet" type="text/css" href="https://brand.mouseless.codes/assets/css/default.css" />
     <style>
-      .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-shadow: 0 0 var(--space-xs) var(--color-bg);
-        pointer-events: none;
-      }
-
-      .container > * {
-        position: absolute;
-      }
-
       .container, .matters {
         position: fixed;
         top: calc(50% - 500px);
@@ -28,6 +15,11 @@
         z-index: -1;
       }
 
+      .container > * {
+        position: absolute;
+        user-select: none;
+      }
+
       .data {
         background-color: var(--color-red-0);
         border-radius: 100%;
@@ -35,7 +27,12 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        transition: font-size 0.2s;
+        transition: font-size 0.1s;
+      }
+
+      .data:hover {
+        border: solid 1px var(--color-red-n3);
+        cursor: pointer;
       }
     </style>
     <script defer src=".output/index.js"></script>
@@ -46,10 +43,10 @@
       <input type="text" v-model="prefix" />
       <button @click="setMultiplier(2)">bigger</button>
       <button @click="setMultiplier(0.5)">smaller</button>
-      <button @click="add">+++</button>
-      <button @click="remove">---</button>
+      <button @click="add">add</button>
+      <button @click="remove">remove</button>
       <button @click="toggle">{{(shown ? 'hide' : 'show')}}</button>
-      <div class="container f f--xl">
+      <div class="container f f--xl" v-on="forwardEvents">
         <h1 class="matter" style="top: 10px; left: 350px;">
           This is matter.js
         </h1>
@@ -62,6 +59,7 @@
           class="matter data"
           style="top: 75px; left: 500px;"
           :style="`font-size: ${(datum/10+0.5)}em`"
+          @click="clickDatum(index)"
         >
           {{prefix}}{{index+1}}
         </p>

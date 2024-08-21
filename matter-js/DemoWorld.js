@@ -48,6 +48,13 @@ function DemoWorld(id) {
     render.mouse = mouse;
   }
 
+  /**
+   * @param {MouseEvent} e
+   */
+  function forwardMouseEvent(e) {
+    canvas.dispatchEvent(new MouseEvent(e.type, e));
+  }
+
   function run() {
     sync();
     Render.run(render);
@@ -60,6 +67,7 @@ function DemoWorld(id) {
 
   return {
     enableMouse,
+    forwardMouseEvent,
     run,
     sync
   };

@@ -3,11 +3,16 @@ const DemoWorld = require("./DemoWorld.js");
 
 const app = createApp({
   setup() {
+    const world = DemoWorld.new("matter-js");
     const data = reactive([]);
     const prefix = ref("#");
     const multiplier = ref(1);
     const shown = ref(true);
-    const world = DemoWorld.new("matter-js");
+    const forwardEvents = {
+      mousedown: world.forwardMouseEvent,
+      mouseup: world.forwardMouseEvent,
+      mousemove: world.forwardMouseEvent
+    }
 
     function setMultiplier(newMultiplier) {
       multiplier.value = newMultiplier;
@@ -29,6 +34,10 @@ const app = createApp({
       shown.value = !shown.value;
     }
 
+    function clickDatum(index) {
+      console.log(`${prefix.value}${index+1} clicked`);
+    }
+
     onMounted(() => {
       world.enableMouse();
       world.run();
@@ -40,10 +49,12 @@ const app = createApp({
       multiplier,
       prefix,
       shown,
+      forwardEvents,
       setMultiplier,
       add,
       remove,
-      toggle
+      toggle,
+      clickDatum
     };
   },
 });
