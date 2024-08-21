@@ -51,6 +51,7 @@ function DomBody(element) {
   function add(engine) {
     Composite.add(engine.world, body);
     Events.on(engine, 'afterUpdate', syncBody2Dom);
+    element.addEventListener("transitionend", syncDom2Body);
   }
 
   /**
@@ -59,6 +60,7 @@ function DomBody(element) {
   function remove(engine) {
     Composite.remove(engine.world, body);
     Events.off(engine, 'afterUpdate', syncBody2Dom);
+    element.removeEventListener("transitionend", syncDom2Body);
   }
 
   return {
