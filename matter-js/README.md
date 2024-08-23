@@ -33,7 +33,7 @@ class, which puts four static edges around the canvas to keep the moving bodies
 within the visible area.
 
 For the sake of further investigation, we created the [`Balloon`](./Balloon.js)
-class which represents a composite object with two sub-bodies and a constraint
+class, which represents a composite object with two sub-bodies and a constraint
 that binds the two bodies together. This composite body also registers a
 `beforeUpdate` event to apply a continuous force calculated using its y-position
 to create the effect of a balloon pulling its lower body upwards.
