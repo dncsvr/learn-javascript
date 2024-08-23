@@ -15,8 +15,8 @@ Thanks to `browserify` library, javascript files are bundled into
 > A full vue project would use `.vue` files, but here we kept things simple to
 > have the focus rather on Matter.js.
 
-And as always, we used `npx http-server` to serve static files locally. Checkout
-[](./package.json) to see the details.
+And as always, we used `npx http-server` to serve static files locally. Check
+out [`package.json`](./package.json) to see the details.
 
 ## Canvas for Matter World
 
