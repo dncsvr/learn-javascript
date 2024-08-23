@@ -5,6 +5,7 @@ const { Bodies, Body, Composite, Events } = require("matter-js");
  */
 function DomBody(element) {
   element.style.margin = "0";
+  element.style.transformOrigin = 'center center';
 
   let width = element.offsetWidth;
   let height = element.offsetHeight;
@@ -25,7 +26,6 @@ function DomBody(element) {
     const y = body.position.y;
     const angle = body.angle;
 
-    element.style.transformOrigin = 'center center';
     element.style.left = `${x - offsetX()}px`;
     element.style.top = `${y - offsetY()}px`;
     element.style.transform = `rotate(${angle}rad)`;
