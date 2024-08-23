@@ -10,7 +10,7 @@ javascript class along with a `Program.js` file to give a dotnet-like feel.
 Thanks to `browserify` library, javascript files are bundled into
 `.output/index.js` and included in `index.html`.
 
-> ![NOTE]
+> [!NOTE]
 >
 > A full vue project would use `.vue` files, but here we kept things simple to
 > have the focus rather on Matter.js.
