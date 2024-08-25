@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="https://brand.mouseless.codes/assets/css/default.css" />
+    <style>
+      .container, .matters {
+        position: fixed;
+        top: calc(50% - 500px);
+        left: calc(50% - 500px);
+        width: 1000px;
+        height: 1000px;
+      }
+
+      .matters {
+        z-index: -1;
+      }
+
+      .container > * {
+        position: absolute;
+        user-select: none;
+      }
+
+      .data {
+        background-color: var(--color-red-0);
+        border-radius: 100%;
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: font-size 0.1s;
+      }
+
+      .data:hover {
+        border: solid 1px var(--color-red-n3);
+        cursor: pointer;
+      }
+    </style>
+    <script defer src=".output/index.js"></script>
+  </head>
+  <body>
+    <canvas id="matter-js" class="matters" width="1000" height="1000"></canvas>
+    <div id="vue-js">
+      <input type="text" v-model="prefix" />
+      <button @click="setMultiplier(2)">bigger</button>
+      <button @click="setMultiplier(0.5)">smaller</button>
+      <button @click="add">add</button>
+      <button @click="remove">remove</button>
+      <button @click="toggle">{{(shown ? 'hide' : 'show')}}</button>
+      <div class="container f f--xl" v-on="forwardEvents">
+        <h1 class="matter" style="top: 10px; left: 350px;">
+          This is matter.js
+        </h1>
+        <p class="matter" style="top: 50px; left: 325px;">
+          And nothing else matterjs 🫠
+        </p>
+        <p
+          v-for="(datum, index) in data"
+          v-if="shown"
+          class="matter data"
+          style="top: 75px; left: 500px;"
+          :style="`font-size: ${(datum/10+0.5)}em`"
+          @click="clickDatum(index)"
+        >
+          {{prefix}}{{index+1}}
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

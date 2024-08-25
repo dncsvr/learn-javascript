@@ -1,0 +1,11 @@
+{
+  "type": "commonjs",
+  "scripts": {
+    "build": "npx browserify Program.js -o .output/index.js",
+    "start": "npm run build && npx http-server . -p 3000"
+  },
+  "dependencies": {
+    "matter-js": "^0.20.0",
+    "vue": "^3.4.38"
+  }
+}
