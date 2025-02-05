@@ -20,7 +20,28 @@ with simple html pages and add it to the project to facilitate development.
 
 ### Adding to project
 
-TBD...
+When adding vite to an existing project, vite and its dependencies must be
+installed first in the directory you want.
+
+```bash
+npm install -D vite
+```
+
+After that, it's just a matter of starting the vite.
+
+```bash
+npx vite
+```
+
+In this case the vite will search for the file to serve and serve it when it
+finds it. We will continue with a simple `index.html` and its links to style and
+script files.
+
+> [!NOTE]
+>
+> It is important to note that Vite watches files based on the dependencies of
+> the files it serves. So it will not track a change in an unrelated file unless
+> you tell it to.
 
 ### Configuring
 
