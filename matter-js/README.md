@@ -7,15 +7,15 @@ it up within a Vue project.
 
 This project uses a simple `index.html` file and separate `.js` files for each
 JavaScript class, along with a `Program.js` file to give a .NET-like feel.
-Thanks to the `browserify` library, the JavaScript files are bundled into
-`.output/index.js` and included in `index.html`.
+With Vite, JavaScript files are executed in a modular way and bundled
+automatically.
 
 > [!NOTE]
 >
 > A full Vue project would use `.vue` files, but here we kept things simple to
 > focus on Matter.js.
 
-As always, we used `npx http-server` to serve static files locally. Check out
+As always, we used `vite` to serve static files locally. Check out
 [`package.json`](./package.json) for the details.
 
 ## Canvas for Matter World

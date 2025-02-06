@@ -1,11 +1,15 @@
 {
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
-    "build": "npx browserify Program.js -o .output/index.js",
-    "start": "npm run build && npx http-server . -p 3000"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "matter-js": "^0.20.0",
     "vue": "^3.4.38"
+  },
+  "devDependencies": {
+    "vite": "^6.1.0"
   }
 }

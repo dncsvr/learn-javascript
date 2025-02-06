@@ -1,5 +1,5 @@
-const { createApp, ref, reactive, onMounted, onUpdated } = require("vue");
-const DemoWorld = require("./DemoWorld.js");
+import { createApp, ref, reactive, onMounted, onUpdated } from 'vue/dist/vue.esm-browser.js'
+import DemoWorld from './DemoWorld.js';
 
 const app = createApp({
   setup() {
@@ -12,18 +12,18 @@ const app = createApp({
       mousedown: world.forwardMouseEvent,
       mouseup: world.forwardMouseEvent,
       mousemove: world.forwardMouseEvent
-    }
+    };
 
     function setMultiplier(newMultiplier) {
       multiplier.value = newMultiplier;
 
-      for(let i=0; i<data.length; i++) {
-        data[i] = data[i]*multiplier.value;
+      for (let i = 0; i < data.length; i++) {
+        data[i] = data[i] * multiplier.value;
       }
     }
 
     function add() {
-      data.push(data.length*multiplier.value);
+      data.push(data.length * multiplier.value);
     }
 
     function remove() {
@@ -35,7 +35,7 @@ const app = createApp({
     }
 
     function clickDatum(index) {
-      console.log(`${prefix.value}${index+1} clicked`);
+      console.log(`${prefix.value}${index + 1} clicked`);
     }
 
     onMounted(() => {
@@ -56,7 +56,7 @@ const app = createApp({
       toggle,
       clickDatum
     };
-  },
+  }
 });
 
 app.mount("#vue-js");
