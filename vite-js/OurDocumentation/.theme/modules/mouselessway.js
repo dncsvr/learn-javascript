@@ -1,5 +1,5 @@
 import { defineNuxtModule } from '@nuxt/kit'
-import { copyFile } from 'fs/promises'
+import { copyFile, mkdir } from 'fs/promises'
 import { resolve } from 'path'
 
 export default defineNuxtModule({
@@ -31,16 +31,18 @@ async function initializeContent(rootDir) {
 
 async function copyContent(rootDir) {
   const sourcePath = resolve(rootDir, '../Demo.md')
-  const targetPath = resolve(rootDir, './content/demo.md')
+  const targetDir = resolve(rootDir, './content')
+  const targetPath = resolve(targetDir, 'demo.md')
 
   try {
+    await mkdir(targetDir, { recursive: true })
+
     await copyFile(sourcePath, targetPath)
     console.log('Content copied successfully')
   } catch (error) {
     console.error('Error copying content:', error)
   }
 }
-
 function watch(config, rootDir) {
   config.plugins?.push({
     name: 'content-watch',
