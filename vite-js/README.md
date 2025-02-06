@@ -27,10 +27,22 @@ installed first in the directory you want.
 npm install -D vite
 ```
 
-After that, it's just a matter of starting the vite.
+After that, it's just a matter of starting the vite
 
 ```bash
 npx vite
+```
+
+or, if you want to use npm scripts just configure `package.json` like below
+
+```json
+{
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  }
+}
 ```
 
 In this case the vite will search for the file to serve and serve it when it
@@ -45,6 +57,59 @@ script files.
 
 ### Configuring
 
-TBD...
+It will automatically detect `vite.config.js` that you create in the root
+directory to configure Vite. You can also use a different filename. If you
+choose a different name, you just need to specify it with `--config` when
+running Vite so that it can detect the configuration file.
+
+For the simplest configuration, the following setup is sufficient:
+
+```js
+export default {
+  // config options
+}
+```
+
+However, with this approach, it can be difficult to see the available
+configuration options. That's why I recommend using the following structure:
+
+```js
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  // ...
+})
+```
+
+Of course, there are many other ways to configure Vite. To explore them, check
+out this [page](configuring-vite).
+
+### Configuring on Other Frameworks
+
+Frameworks like Nuxt have their own Vite configurations, meaning they won't
+directly accept the vite.config.js file you provide. Instead, they typically
+allow you to configure Vite through their own configuration files, plugins, or
+modules. At least, that's how Nuxt handles it.
+
+With Nuxt, you can configure Vite using the `nuxt.config.ts` file, as shown
+below. For more details on available configuration options, check out this
+[page](vite-configuration-on-nuxt).
+
+```ts
+export default defineNuxtConfig({
+    ...
+    vite: {
+        dev: ...,
+        envDir: ...,
+        ...
+    }
+})
+```
+
+If you plan to configure Vite using a module or plugin, you can check out our
+[example](./OurDocumentation/.theme/modules/mouselessway.js).
 
 hot-module-replacement: https://vite.dev/guide/features.html#hot-module-replacement
+hot-module-replacement: https://vite.dev/guide/features.html#hot-module-replacement
+configuring-vite: https://vite.dev/config/#configuring-vite
+vite-configuration-on-nuxt: https://nuxt.com/docs/api/nuxt-config#vite
