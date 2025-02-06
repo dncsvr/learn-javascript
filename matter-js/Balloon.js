@@ -5,7 +5,9 @@ import { Bodies, Body, Composite, Constraint, Events } from "matter-js";
  * @param {Number} y
  * @param {Number} size
  */
-function Balloon(x, y, size = undefined) {
+function Balloon(x, y,
+  size = undefined
+) {
   size = size || Math.random() * 20 + 10;
 
   const composite = Composite.create({ label: "balloon" });
