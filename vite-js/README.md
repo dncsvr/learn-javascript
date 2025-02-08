@@ -38,7 +38,7 @@ or, if you want to use npm scripts just configure `package.json` like below
 ```json
 {
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "vite build",
     "preview": "vite preview"
   }
