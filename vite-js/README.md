@@ -81,6 +81,19 @@ export default defineConfig({
 })
 ```
 
+> [!NOTE]
+>
+> Watch does not work properly in virtual machines when using Vite. You may need
+> to set `usePolling` to `true` under watch configuration.
+>
+> ```js
+> server: {
+>   watch: {
+>     usePolling: true
+>   }
+> }
+> ```
+
 Of course, there are many other ways to configure Vite. To explore them, check
 out this [page][configuring-vite].
 
