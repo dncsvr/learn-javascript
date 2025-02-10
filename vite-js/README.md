@@ -107,7 +107,7 @@ export default defineNuxtConfig({
 ```
 
 If you plan to configure Vite using a module or plugin, you can check out our
-[example](./configure-in-nuxt/.theme/modules/mouselessway.js).
+[example](configure-in-nuxt/.theme/modules/mouselessway.js).
 
 [Hot Module Replacement]: https://vite.dev/guide/features.html#hot-module-replacement
 [configuring-vite]: https://vite.dev/config/#configuring-vite
