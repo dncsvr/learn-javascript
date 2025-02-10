@@ -1,7 +1,7 @@
 # Vite.js
 
 Vite.js speeds up the development process with its
-[Hot Module Replacement](hot-module-replacement) feature. Because of this
+[Hot Module Replacement][] feature. Because of this
 feature, we used to research, we learned, we use it.
 
 ## Hot Module Replacement
@@ -82,7 +82,7 @@ export default defineConfig({
 ```
 
 Of course, there are many other ways to configure Vite. To explore them, check
-out this [page](configuring-vite).
+out this [page][configuring-vite].
 
 ### Configuring on Other Frameworks
 
@@ -93,7 +93,7 @@ modules. At least, that's how Nuxt handles it.
 
 With Nuxt, you can configure Vite using the `nuxt.config.ts` file, as shown
 below. For more details on available configuration options, check out this
-[page](vite-configuration-on-nuxt).
+[page][vite-configuration-on-nuxt].
 
 ```ts
 export default defineNuxtConfig({
@@ -109,7 +109,6 @@ export default defineNuxtConfig({
 If you plan to configure Vite using a module or plugin, you can check out our
 [example](./OurDocumentation/.theme/modules/mouselessway.js).
 
-hot-module-replacement: https://vite.dev/guide/features.html#hot-module-replacement
-hot-module-replacement: https://vite.dev/guide/features.html#hot-module-replacement
-configuring-vite: https://vite.dev/config/#configuring-vite
-vite-configuration-on-nuxt: https://nuxt.com/docs/api/nuxt-config#vite
+[Hot Module Replacement]: https://vite.dev/guide/features.html#hot-module-replacement
+[configuring-vite]: https://vite.dev/config/#configuring-vite
+[vite-configuration-on-nuxt]: https://nuxt.com/docs/api/nuxt-config#vite
