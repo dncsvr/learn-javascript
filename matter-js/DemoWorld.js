@@ -1,10 +1,10 @@
-const { Composite, Engine, Mouse, MouseConstraint, Render, Runner } = require("matter-js");
-const Balloon = require("./Balloon.js");
-const DomBody = require("./DomBody.js");
-const Frame = require("./Frame.js");
+import { Composite, Engine, Mouse, MouseConstraint, Render, Runner } from "matter-js";
+import Balloon from "./Balloon.js";
+import DomBody from "./DomBody.js";
+import Frame from "./Frame.js";
 
 function DemoWorld(id) {
-  const canvas = document.getElementById(id)
+  const canvas = document.getElementById(id);
   const width = canvas.width;
   const height = canvas.height;
 
@@ -73,6 +73,6 @@ function DemoWorld(id) {
   };
 }
 
-module.exports = {
+export default {
   new: DemoWorld
 };

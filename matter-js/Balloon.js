@@ -1,4 +1,4 @@
-const { Bodies, Body, Composite, Constraint, Events } = require("matter-js");
+import { Bodies, Body, Composite, Constraint, Events } from "matter-js";
 
 /**
  * @param {Number} x
@@ -58,6 +58,6 @@ function Balloon(x, y,
   };
 }
 
-module.exports = {
+export default {
   new: Balloon
 };

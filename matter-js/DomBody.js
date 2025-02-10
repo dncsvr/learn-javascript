@@ -1,4 +1,4 @@
-const { Bodies, Body, Composite, Events } = require("matter-js");
+import { Bodies, Body, Composite, Events } from "matter-js";
 
 /**
  * @param {HTMLElement} element
@@ -101,7 +101,7 @@ function sync(engine) {
   }
 }
 
-module.exports = {
+export default {
   new: DomBody,
   sync
 };
