@@ -1,8 +1,7 @@
 # Vite.js
 
-Vite.js speeds up the development process with its
-[Hot Module Replacement][] feature. Because of this
-feature, we used to research, we learned, we use it.
+Vite.js speeds up the development process with its [Hot Module Replacement][]
+feature. Because of this feature, we used to research, we learned, we use it.
 
 ## Hot Module Replacement
 
