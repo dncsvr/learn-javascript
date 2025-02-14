@@ -1,3 +1,3 @@
 <template>
-  <MyComponent color="red" />
+  <Sample color="red" />
 </template>

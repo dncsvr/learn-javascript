@@ -10,5 +10,5 @@ defineProps({
 </script>
 <style lang="css">
 .red { background-color: red; }
-.blue { background-color: blue; }
+.blue { background-color: blue; color: white; }
 </style>
