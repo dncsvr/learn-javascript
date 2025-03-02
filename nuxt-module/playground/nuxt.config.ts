@@ -1,6 +1,11 @@
+import Aura from '@primevue/themes/aura'
+
 export default defineNuxtConfig({
-  modules: ['../src/module'],
+  modules: ['@mouseless/nuxt-module'],
+  ssr: false,
   devtools: { enabled: true },
   compatibilityDate: '2025-03-01',
-  myModule: {},
+  mouseless: {
+    theme: Aura,
+  },
 })
