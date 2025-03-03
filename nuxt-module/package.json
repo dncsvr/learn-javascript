@@ -1,6 +1,6 @@
 {
   "name": "@dncsvr/nuxt-module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Learn project for how to create and publish a Nuxt module",
   "homepage": "https://mouseless.codes",
   "repository": {
@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "prepack": "nuxt-module-build build",
-    "prepare": "nuxi prepare",
+    "prepare": "nuxt-module-build prepare",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
