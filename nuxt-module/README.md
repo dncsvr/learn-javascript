@@ -55,7 +55,7 @@ npm publish --access public
 
 To publish your package using GitHub actions, you will need an access token for
 your npm account. Create and store your access token in github secrets and
-use in your workflow.[npm publish](.github/workflows/npm-publish.yml)
+use in your workflow. [npm publish](.github/workflows/npm-publish.yml)
 
 ## Notes
 
@@ -67,8 +67,8 @@ to the `_nuxtApp.vueApp` and bundle `primevue` and related dependencies in our
 `package.json`.
 
 Current `addPlugin` helper does not support passing any parameters, so the work
-around for setting them for prime vue was to expose the parameter from module
-configuration, set a public variable in runtime config and use that value
+around for setting theme for `primevue` was to expose the config from module to
+nuxt configuration, set a public variable in runtime config and use that value 
 in a plugin.
 
 ```javascript

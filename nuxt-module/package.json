@@ -2,7 +2,7 @@
   "name": "@mouseless/nuxt-module",
   "version": "0.0.1",
   "description": "Learn project for how to create and publish a Nuxt module",
-  "homepage": "https://www.mouseless.codes",
+  "homepage": "https://mouseless.codes",
   "repository": {
     "type": "git",
     "url": "https://github.com/mouseless/learn-javascript.git"

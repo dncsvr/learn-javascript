@@ -11,6 +11,10 @@ side.
   physical body-like dom elements or visuals on a web page
 - [vite.js](vite-js/README.md): We use `Vite.js` with its `Hot Module
   Replacement` feature to make our development process easier
+- [nuxt](https://github.com/mouseless/learn-nuxt): The framework we use for
+  frontend development
+  - [nuxt-module](nuxt-module/README.md): We use nuxt module for creating 
+    component libraries  
 
 ## Researches
 
