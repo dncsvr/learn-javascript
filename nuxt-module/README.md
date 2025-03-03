@@ -55,7 +55,7 @@ npm publish --access public
 
 To publish your package using GitHub actions, you will need an access token for
 your npm account. Create and store your access token in github secrets and
-use in your workflow. [npm publish](.github/workflows/npm-publish.yml)
+use in your workflow. [npm publish](../.github/workflows/npm-publish.yml)
 
 ## Notes
 
