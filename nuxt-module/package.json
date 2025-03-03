@@ -2,8 +2,12 @@
   "name": "@mouseless/nuxt-module",
   "version": "0.0.1",
   "description": "Learn project for how to create and publish a Nuxt module",
-  "repository": "mouseless/learn-javascript",
-  "license": "MIT",
+  "homepage": "https://www.mouseless.codes",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mouseless/learn-javascript.git"
+  },
+  "author": "mouseless",
   "type": "module",
   "exports": {
     ".": {
@@ -22,7 +26,6 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "lint": "eslint ."
   },
   "dependencies": {
