@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "name": "nuxt-module-playground",
+  "type": "module",
+  "scripts": {
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "generate": "nuxi generate"
+  },
+  "dependencies": {
+    "@mouseless/nuxt-module": "file:..",
+    "nuxt": "^3.15.4",
+    "@primevue/themes": "^4.2.5"
+  }
+}
