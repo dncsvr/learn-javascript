@@ -18,7 +18,7 @@ jobs:
         run: | 
           cd ./nuxt-module
           npm ci
-          npm nuxt prepare
+          npm run prepare
           npm run prepack
       - name: Publish
         run: |
